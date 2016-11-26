@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent">
+
+        <TableLayout
+            android:id="@+id/amortization"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:background="#ffff00">
+                <TextView
+                    android:text="a"
+                    android:padding="3dip"/>
+                <TextView
+                    android:text="b"
+                    android:padding="3dip"/>
+                <TextView
+                    android:text="c"
+                    android:padding="3dip"/>
+                <TextView
+                    android:text="d"
+                    android:padding="3dip"/>
+                <TextView
+                    android:text="e"
+                    android:padding="3dip"/>
+                <TextView
+                    android:text="f"
+                    android:padding="3dip"/>
+                <TextView
+                    android:text="g"
+                    android:padding="3dip"/>
+            </TableRow>
+        </TableLayout>
+    </HorizontalScrollView>
+</ScrollView>
