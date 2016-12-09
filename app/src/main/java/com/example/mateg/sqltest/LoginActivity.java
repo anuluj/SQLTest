@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
 
         etUser.setText("andro_login");
         etName.setText("Northwind");
-        etHost.setText("192.168.241.2");
+        etHost.setText("192.168.0.12");
         etPassword.setText("password");
 
 
@@ -114,8 +114,8 @@ public class LoginActivity extends AppCompatActivity {
                 pbTestConnection.setVisibility(View.INVISIBLE);
                 btTestConnection.setEnabled(true);
                 btNewQuery.setVisibility(View.VISIBLE);
-                ((ConnectionHandler) context).setConn(conn);
-
+                ConnectionHandler connectionHandler = (ConnectionHandler) getApplicationContext();
+                connectionHandler.setConn(conn);
             }
         }
 
@@ -125,8 +125,10 @@ public class LoginActivity extends AppCompatActivity {
             try {
                 conn = connectionClass.CONN();
 //                Statement stmt = conn.createStatement();
-//                ResultSet rs = stmt.executeQuery("SELECT COUNT(1) FROM service s WHERE s.service_id = ?");
-//                if(rs.getInt(0) == 1) {
+//                ResultSet rs = stmt.executeQuery("USE "+host+"\n" +
+//                        "SELECT COUNT(*) from information_schema.tables \n" +
+//                        "WHERE table_type = 'base table' ");
+//                if(rs.getInt(0) >= 1) {
 //                    result = "connected";
 //                }
 //                else
@@ -138,7 +140,7 @@ public class LoginActivity extends AppCompatActivity {
                 conn = null;
                 isSuccess = false;
             }
-            conn = null;
+            //conn = null;
             isSuccess = true;
             return result;
         }

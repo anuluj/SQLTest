@@ -56,6 +56,7 @@ public class QueryActivity extends AppCompatActivity {
     HorizontalScrollView horizontalScrollView;
     String user, name, password, port, host;
 
+
     Context context = this.getApplication();
     Intent test_intent;
 
@@ -88,8 +89,11 @@ public class QueryActivity extends AppCompatActivity {
 
         queryText.setText("select * from Employees");
         connectionClass = new ConnectionClass(host, name, user, password, port);
-        CreateConnection createConnection = new CreateConnection();
-        createConnection.execute();
+        ConnectionHandler connectionHandler = (ConnectionHandler) getApplication();
+        if(connectionHandler.getConn() == null) {
+            CreateConnection createConnection = new CreateConnection();
+            createConnection.execute();
+        }
 
         btExecuteQuery.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -231,9 +235,13 @@ public class QueryActivity extends AppCompatActivity {
                 sw.stop();
                 Log.d("TIMER CONN", " " + sw.getElapsedTime());
 
-                if (((ConnectionHandler) context).getConn() == null) {
+               // if (((ConnectionHandler) context).getConn() == null) {
+                //    z = "Error in connection with SQL server";
+                ConnectionHandler connectionHandler = (ConnectionHandler) getApplication();
+                if(connectionHandler.getConn() == null) {
                     z = "Error in connection with SQL server";
                 } else {
+                    conn = connectionHandler.getConn();
                     String query = queryString;
 
                     sw.start();
@@ -304,8 +312,9 @@ public class QueryActivity extends AppCompatActivity {
         @Override
         protected Boolean doInBackground(String... strings) {
             try {
-                conn = connectionClass.CONN();
-                ((ConnectionHandler) context).setConn(conn);
+//                conn = connectionClass.CONN();
+//                ConnectionHandler connectionHandler = (ConnectionHandler) getApplication();
+//                connectionHandler.setConn(conn);
             } catch (Exception e) {
                 Toast.makeText(QueryActivity.this, "ERROR: " + e.getMessage(), Toast.LENGTH_LONG).show();
                 return false;
