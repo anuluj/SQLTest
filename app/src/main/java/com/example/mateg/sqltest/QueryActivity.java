@@ -149,6 +149,7 @@ public class QueryActivity extends AppCompatActivity {
     }
 
     private void CreateTable(int rowsNumber, int columnsNumber) {
+        int currentRow=0;
         TableRow newRow;
         int numerElementu = 0;
         if (tableLayout != null) {
@@ -159,6 +160,7 @@ public class QueryActivity extends AppCompatActivity {
             for (int i = 0; i <= rowsNumber; i++) {  //dla kazdego wiersza
                 newRow = new TableRow(this);
                 newRow.setPadding(2, 2, 2, 2);
+                currentRow++;
                 if (i == 0)
                     newRow.setBackgroundColor(Color.parseColor("#b8da8b")); //#92C94A // base color #6F9C33
                 else if (i % 2 == 0)

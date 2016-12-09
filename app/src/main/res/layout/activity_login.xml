@@ -39,6 +39,7 @@
         android:layout_below="@id/tvHost"
         android:id="@+id/etHost"
         android:hint="Host"
+        android:inputType="number"
         android:layout_toLeftOf="@+id/tvDoubleDot"
         android:layout_toStartOf="@+id/tvDoubleDot"
         android:layout_alignParentLeft="true"
@@ -122,18 +123,19 @@
         android:text="New Query"
         android:layout_below="@+id/btTestConnection"
         android:id="@+id/btNewQuery"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:textColor="#ffffff"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:padding="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:id="@+id/btCancelTest"
-        android:layout_alignParentBottom="true"
-        android:text="Cancel"/>
-
 </RelativeLayout>
+    <!--<Button-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/colorPrimary"-->
+        <!--android:textColor="#ffffff"-->
+        <!--android:textStyle="bold"-->
+        <!--android:textSize="20sp"-->
+        <!--android:padding="10dp"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:layout_marginBottom="5dp"-->
+        <!--android:id="@+id/btCancelTest"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:text="Cancel"/>-->
+
+

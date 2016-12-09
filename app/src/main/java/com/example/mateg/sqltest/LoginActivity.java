@@ -41,8 +41,8 @@ public class LoginActivity extends AppCompatActivity {
 
         btTestConnection = (Button) findViewById(R.id.btTestConnection);
         btNewQuery = (Button) findViewById(R.id.btNewQuery);
-        btCancelTest = (Button) findViewById(R.id.btCancelTest);
-        btCancelTest.setVisibility(View.INVISIBLE);
+       // btCancelTest = (Button) findViewById(R.id.btCancelTest);
+      //  btCancelTest.setVisibility(View.INVISIBLE);
         btNewQuery.setVisibility(View.INVISIBLE);
 
         pbTestConnection = (ProgressBar) findViewById(R.id.pb_connectionTest);
@@ -81,14 +81,6 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
-        btCancelTest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                createConnection.cancel(true);
-
-            }
-        });
     }
 
     public class CreateConnectionV2 extends AsyncTask<String, String, String> {
@@ -97,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
-            btCancelTest.setVisibility(View.VISIBLE);
+           // btCancelTest.setVisibility(View.VISIBLE);
             pbTestConnection.setVisibility(View.VISIBLE);
             btTestConnection.setEnabled(false);
             btNewQuery.setVisibility(View.INVISIBLE);
@@ -105,7 +97,7 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String s) {
-            btCancelTest.setVisibility(View.INVISIBLE);
+         //   btCancelTest.setVisibility(View.INVISIBLE);
             if (isSuccess) {
 //                queryString = queryText.getText().toString();
 //                ExecuteQuery exeQuer = new ExecuteQuery();
