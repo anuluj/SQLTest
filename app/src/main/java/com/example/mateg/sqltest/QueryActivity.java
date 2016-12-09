@@ -1,5 +1,6 @@
 package com.example.mateg.sqltest;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.inputmethodservice.Keyboard;
@@ -55,6 +56,7 @@ public class QueryActivity extends AppCompatActivity {
     HorizontalScrollView horizontalScrollView;
     String user, name, password, port, host;
 
+    Context context = this.getApplication();
     Intent test_intent;
 
     @Override
@@ -229,7 +231,7 @@ public class QueryActivity extends AppCompatActivity {
                 sw.stop();
                 Log.d("TIMER CONN", " " + sw.getElapsedTime());
 
-                if (conn == null) {
+                if (((ConnectionHandler) context).getConn() == null) {
                     z = "Error in connection with SQL server";
                 } else {
                     String query = queryString;
@@ -303,6 +305,7 @@ public class QueryActivity extends AppCompatActivity {
         protected Boolean doInBackground(String... strings) {
             try {
                 conn = connectionClass.CONN();
+                ((ConnectionHandler) context).setConn(conn);
             } catch (Exception e) {
                 Toast.makeText(QueryActivity.this, "ERROR: " + e.getMessage(), Toast.LENGTH_LONG).show();
                 return false;

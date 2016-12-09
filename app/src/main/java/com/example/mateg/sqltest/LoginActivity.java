@@ -1,9 +1,11 @@
 package com.example.mateg.sqltest;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +13,10 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import static java.sql.Types.NULL;
 
 public class LoginActivity extends AppCompatActivity {
     EditText etUser, etName, etPassword, etPort, etHost;
@@ -19,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     ProgressBar pbTestConnection;
     ConnectionClass connectionClass;
     CreateConnectionV2 createConnection;
+    Context context = this.getApplication();
     Intent i;
 
     @Override
@@ -79,6 +86,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 createConnection.cancel(true);
+
             }
         });
     }
@@ -106,6 +114,8 @@ public class LoginActivity extends AppCompatActivity {
                 pbTestConnection.setVisibility(View.INVISIBLE);
                 btTestConnection.setEnabled(true);
                 btNewQuery.setVisibility(View.VISIBLE);
+                ((ConnectionHandler) context).setConn(conn);
+
             }
         }
 
@@ -114,8 +124,14 @@ public class LoginActivity extends AppCompatActivity {
             String result;
             try {
                 conn = connectionClass.CONN();
+//                Statement stmt = conn.createStatement();
+//                ResultSet rs = stmt.executeQuery("SELECT COUNT(1) FROM service s WHERE s.service_id = ?");
+//                if(rs.getInt(0) == 1) {
+//                    result = "connected";
+//                }
+//                else
+//                    result = "connection failed";
                 result = "connected";
-
             } catch (Exception e) {
                 Toast.makeText(LoginActivity.this, "ERROR: " + e.getMessage(), Toast.LENGTH_LONG).show();
                 result = "error";
